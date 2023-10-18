@@ -70,7 +70,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'scholar.wsgi.application'
 
 
-# Database
+# Databaseee
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
