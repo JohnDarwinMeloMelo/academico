@@ -1,6 +1,6 @@
 from django.db import models
 class User(models.Model):
-    emaIl=models.CharField(max_length=100)
+    email=models.CharField(max_length=100)
     password=models.CharField(max_length=100)
-    
+    dn1=models.CharField(max_length=10,default='')
 
