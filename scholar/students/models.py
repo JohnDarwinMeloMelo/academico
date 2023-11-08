@@ -1,61 +1,67 @@
 from django.db import models
-class User(models.Model):
+from django.utils import timezone
+import datetime
+
+# Create your models here.
+class Users(models.Model):
     email = models.CharField(max_length=100)
-    password = models.CharField(max_length=250)
-    status = models.BooleanField(null=false)
-    created_at = models.DateTimeField()
-    updated_at = models.DateTimeField()
-    deleted_at = models.DateTimeField(null=false)
+    password = models.CharField(max_length=500)
+    status = models.BooleanField(null=True)
+    created_at = models.DateTimeField(default=datetime.datetime.now, null=False)
+    updated_at = models.DateTimeField(default=datetime.datetime.now, null=False)
+    deleted_at = models.DateTimeField(null=True)
+
 class Students(models.Model):
-    code = models.CharField(max_length=50)
-    id_person = models.IntegerField()
-    status = models.BooleanField(null=true)
-    created_at = models.DateTimeField()
-    updated_at = models.DateTimeField()
-    deleted_at = models.DateTimeField(null=false)
-class IdentificationType(models.Model):
-    name = models.CharField(max_length=50)
-    abrew = models.CharField(max_length=10)
-    descrip = models.CharField(max_length=100)
-    created_at = models.DateTimeField()
-    updated_at = models.DateTimeField()
-    deleted_at = models.DateTimeField(null=True)
-    
-class Persons(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    id_iden_type = models.IntegerField()
-    ident_number = models.CharField(max_length=15)
-    Id_exp_city = models.IntegerField()
-    address = models.CharField(max_length=150)
-    mobile = models.CharField(max_length=50)
-    id_user = models.IntegerField()
-    created_at = models.DateTimeField()
-    updated_at = models.DateTimeField()
+    code = models.CharField(max_length=100)
+    id_person = models.IntegerField(null=False)
+    status = models.BooleanField(null=True)
+    created_at = models.DateTimeField(default=datetime.datetime.now, null=False)
+    updated_at = models.DateTimeField(default=datetime.datetime.now, null=False)
     deleted_at = models.DateTimeField(null=True)
 
-class City(models.Model):
-    name = models.CharField(max_length=100)
-    abrew = models.CharField(max_length=10)
-    descrip = models.CharField(max_length=10)
-    id_dept = models.IntegerField()
-    created_at = models.DateTimeField()
-    updated_at = models.DateTimeField()
+class identification_types(models.Model):
+    name = models.CharField(max_length=50, null=False)
+    abrev = models.CharField(max_length=10, null=False)
+    descrip = models.CharField(max_length=100, null=False)
+    created_at = models.DateTimeField(default=datetime.datetime.now, null=False)
+    updated_at = models.DateTimeField(default=datetime.datetime.now, null=False)
     deleted_at = models.DateTimeField(null=True)
 
-class Department(models.Model):
-    name = models.CharField(max_length=100)
-    abrew = models.CharField(max_length=10)
-    deschp = models.CharField(max_length=10)
-    id_country = models.IntegerField()
-    created_at = models.DateTimeField()
-    updated_at = models.DateTimeField()
+class persons(models.Model):
+    firs_name = models.CharField(max_length=50, null=False)
+    last_name = models.CharField(max_length=50, null=False)
+    id_ident_type = models.IntegerField(null=False)
+    ident_number = models.CharField(max_length=15, null=False)
+    id_exp_city = models.IntegerField(null=False)
+    address = models.CharField(max_length=150, null=False)
+    mobile = models.CharField(max_length=50, null=False)
+    id_user = models.IntegerField(null=False)
+    created_at = models.DateTimeField(default=datetime.datetime.now, null=False)
+    updated_at = models.DateTimeField(default=datetime.datetime.now, null=False)
     deleted_at = models.DateTimeField(null=True)
 
-class Country(models.Model):
-    name = models.CharField(max_length=100)
-    abrev = models.CharField(max_length=10)
-    descrip = models.CharField(max_length=10)
-    created_at = models.DateTimeField()
-    updated_at = models.DateTimeField()
+class cities(models.Model):
+    name = models.CharField(max_length=100, null=False)
+    abrev = models.CharField(max_length=10, null=False)
+    descrip = models.CharField(max_length=10, null=False)
+    id_dept = models.IntegerField(null=False)
+    created_at = models.DateTimeField(default=datetime.datetime.now, null=False)
+    updated_at = models.DateTimeField(default=datetime.datetime.now, null=False)
+    deleted_at = models.DateTimeField(null=True)
+
+class departaments(models.Model):
+    name = models.CharField(max_length=100, null=False)
+    abrev = models.CharField(max_length=10, null=False)
+    descrip = models.CharField(max_length=10, null=False)
+    id_country = models.IntegerField(null=False)
+    created_at = models.DateTimeField(default=datetime.datetime.now, null=False)
+    updated_at = models.DateTimeField(default=datetime.datetime.now, null=False)
+    deleted_at = models.DateTimeField(null=True)
+
+class countries(models.Model):
+    name = models.CharField(max_length=100, null=False)
+    abrev = models.CharField(max_length=10, null=False)
+    descrip = models.CharField(max_length=10, null=False)
+    created_at = models.DateTimeField(default=datetime.datetime.now, null=False)
+    updated_at = models.DateTimeField(default=datetime.datetime.now, null=False)
     deleted_at = models.DateTimeField(null=True)
